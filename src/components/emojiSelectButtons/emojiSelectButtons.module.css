@@ -1,0 +1,26 @@
+.emojidiv{
+    text-align: center;
+    margin: 10px;
+}
+
+.emoji {
+    height: 42px;
+    width: 42px;
+    margin: 5px;
+}
+
+.unclicked {
+    opacity: 0.3
+}
+
+.fabdiv {
+    position: absolute;
+    margin: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.labelHolder {
+position: fixed;
+}

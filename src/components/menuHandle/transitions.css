@@ -1,0 +1,21 @@
+.menuHandle-enter {
+    transform: translateY(20px);
+  }
+  .menuHandle-enter-active {
+    transform: translateY(0);
+    transition: transform 1000ms;
+  }
+.menuHandle-appear {
+    transform: translateY(20px);
+  }
+  .menuHandle-appear-active {
+    transform: translateY(0);
+    transition: transform 1000ms;
+  }
+  .menuHandle-exit {
+    opacity: 1;
+  }
+  .menuHandle-exit-active {
+    opacity: 0;
+    transition: opacity 200ms;
+  }

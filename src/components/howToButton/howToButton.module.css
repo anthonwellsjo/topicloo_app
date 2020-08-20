@@ -1,0 +1,40 @@
+.div {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+}
+
+.button {
+    background-color: transparent;
+    font-family: 'Open Sans', sans-serif;
+    font-size: large;
+    font-weight: 400;
+    border: none;
+}
+
+.button:hover {
+    border: 1px solid black;
+}
+
+.icon {
+    height: 24px;
+    width: 24px;
+}
+
+.fabdiv {
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    z-index: 300;
+}
+
+
+.fab:focus {
+    outline: none !important;
+    outline-offset: none !important;
+}
+
+.fabhelp {
+    font-family: 'Playfair Display', serif;
+    color: black;
+}

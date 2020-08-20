@@ -1,0 +1,14 @@
+.showHamburger-enter {
+    opacity: 0;
+  }
+  .showHamburger-enter-active {
+    opacity: 1;
+    transition: opacity 2000ms;
+  }
+  .showHamburger-exit {
+    opacity: 1;
+  }
+  .showHamburger-exit-active {
+    opacity: 0;
+    transition: opacity 2000ms;
+  }

@@ -1,0 +1,7 @@
+.popUpMenu-enter {
+    transform: translateY(620px);
+  }
+  .popUpMenu-enter-active {
+    transform: translateY(0);
+    transition: transform 500ms;
+  }

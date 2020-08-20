@@ -1,0 +1,24 @@
+.div {
+    display: block;
+    text-align: center;
+    width: 80%;
+    height: 80%;
+    background-color: deeppink;
+    box-shadow: 5px 10px dimgray;
+}
+
+@keyframes example {
+    0%   {background-color:pink; border-color:pink;}
+    25%  {background-color:sandybrown; border-color:sandybrown;}
+    50%  {background-color: lightblue; border-color:lightblue;}
+    75%  {background-color:lightcoral; border-color:lightcoral;}
+    100% {background-color:pink; border-color:pink;}
+  }
+  
+  /* The element to apply the animation to */
+  .animatedColors {
+    background-color: red;
+    animation-name: example;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+  }

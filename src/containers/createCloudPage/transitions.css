@@ -1,0 +1,22 @@
+.emoji-alert-enter {
+   transform: translateX(-350px);
+  }
+  .emoji-alert-enter-active {
+      transform: translateX(0);
+      transition: transform .4s;
+  }
+  .emoji-alert-exit {
+    transform: translateX(0);
+  }
+  .emoji-alert-exit-active {
+    transform: translateX(350px);
+    transition: transform .4s;
+  }
+
+  .infofade-exit {
+    opacity: 1;
+  }
+  .infofade-exit-active {
+    opacity: 0;
+    transition: opacity 300ms;
+  }

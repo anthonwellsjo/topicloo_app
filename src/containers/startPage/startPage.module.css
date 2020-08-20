@@ -1,0 +1,33 @@
+.mainFrame {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.Frame {
+    border-radius: 50px;
+    background-color: thistle;
+    width: 60%;
+    height: 60%;
+    text-align: center;
+    padding: 50px;
+    padding-top: 150px;
+    box-shadow: 10px 15px #888888;
+    z-index: 300;
+}
+
+.goButton {
+    padding: 5px;
+    margin: 10px;
+}
+
+.newButton {
+    margin-top: 100px;
+    padding: 10px;
+}
+

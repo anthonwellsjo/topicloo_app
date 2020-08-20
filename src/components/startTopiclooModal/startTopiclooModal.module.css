@@ -1,0 +1,14 @@
+
+.paper{
+margin: 50px;
+max-width: 280px;
+height: 80%;
+width: 90%;
+z-index: 100;
+}
+
+.buttonsDiv {
+    position: relative;
+    bottom: 0;
+    right: 10px;
+}

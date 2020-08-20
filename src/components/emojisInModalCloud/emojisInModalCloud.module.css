@@ -1,0 +1,14 @@
+.emojidiv{
+    text-align: center;
+    margin: 10px;
+}
+
+.emoji {
+    height: 55px;
+    width: 55px;
+    margin: 5px;
+}
+
+.unclicked {
+    opacity: 0.3
+}

@@ -1,0 +1,111 @@
+.textarea {
+    width: 90%;
+    height: 80px;
+    resize: none;
+}
+
+.textarea:focus {
+    outline: none !important;
+}
+
+.div {
+    display: inline-block;
+    text-align: center;
+    position: absolute;
+    height: 80%;
+    width: 80%;
+    background-color: darkviolet;
+    border-radius: 5px;
+    box-shadow: 5px 10px darkslategray;
+
+}
+
+.addSubjectBtn {
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.topicWrapper {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    width: 80%;
+    height: 200px;    
+}
+
+.topicBtn {
+    margin: 2px;
+}
+
+.doneButton {
+    margin-top: 50px;
+    padding: 5px 10px;
+}
+
+.commentBox {
+    width: 100%;
+    height: 80px;
+}
+
+.alertDiv {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999999 !important;
+    margin: 70px;
+    text-align: center;
+}
+
+.textareadiv {
+    height: 100px;
+}
+
+.topicBtn {
+    width: 100%;
+}
+.deleteactive {
+    background-color: salmon;
+    opacity: .7;
+    border: 2px solid grey;
+    transition: background-color .3s ease-in-out, border .3s ease-in-out, opacity .3s ease-in-out;
+    position: relative;
+    animation-name: shake;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    cursor: pointer;
+  }
+  
+  @keyframes shake {
+    0% {left: 0}
+    1% {left: -2px}
+    2% {left: -4px}
+    3% {left: -6px}
+    4% {left: -4px}
+    5% {left: -2px}
+    6% {left: 0px}
+    7% {left: 2px}
+    8% {left: 4px}
+    9% {left: 6px}
+    10% {left: 4px}
+    12% {left: 2px}
+    13% {left: 0px}
+    14% {left: -2px}
+    15% {left: -4px}
+    16% {left: -6px}
+    17% {left: -4px}
+    18% {left: -2px}
+    19% {left: 0px}
+    20% {left: 2px}
+    21% {left: 4px}
+    22% {left: 6px}
+    23% {left: 4px}
+    24% {left: 2px}
+    25% {left: 0px}
+  }
+
+.delButton {
+    height: 100%;
+}

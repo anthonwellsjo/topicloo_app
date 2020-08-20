@@ -1,0 +1,66 @@
+.startPage-appear {
+    transform: translateX(-320px);
+  }
+  .startPage-appear-active {
+    transform: translateX(0);
+    transition: transform 300ms;
+  }
+  .startPage-exit {
+    transform: translateX(0);
+  }
+  .startPage-exit-active {
+    transform: translateX(-320px);
+    transition: transform 300ms;
+  }
+
+
+  .infofade-appear {
+    opacity: 0;
+  }
+  .infofade-appear-active {
+    opacity: 1;
+    transition: opacity 300ms;
+  }
+  .infofade-enter {
+    opacity: 0;
+  }
+  .infofade-enter-active {
+    opacity: 1;
+    transition: opacity 300ms;
+  }
+  
+  .infofade-exit {
+    opacity: 1;
+  }
+  .infofade-exit-active {
+    opacity: 0;
+    transition: opacity 300ms;
+  }
+
+
+  .infodropdown-appear {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  .infodropdown-appear-active {
+    transform: translateY(0);
+    opacity: 1;
+    transition: opacity 300ms, transform 300ms;
+  }
+  .infodropdown-enter {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  .infodropdown-enter-active {
+    transform: translateY(0);
+    opacity: 1;
+    transition: opacity 300ms, transform 300ms;
+  }
+  
+  .infodropdown-exit {
+    opacity: 1;
+  }
+  .infodropdown-exit-active {
+    opacity: 0;
+    transition: opacity 300ms;
+  }

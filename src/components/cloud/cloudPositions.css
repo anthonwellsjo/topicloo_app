@@ -1,0 +1,84 @@
+/* POSITIONS */
+.firstCloudPosition {
+	position: absolute;
+	top: 20px;
+}
+.secondCloudPosition {
+	position: absolute;
+	top: 70px;
+}
+.thirdCloudPosition {
+	position: absolute;
+	top: 120px;
+}
+.fourthCloudPosition {
+	position: absolute;
+	top: 170px;
+}
+.fifthCloudPosition {
+	position: absolute;
+	top: 220px;
+}
+.sixthCloudPosition {
+	position: absolute;
+	top: 270px;
+}
+.seventhCloudPosition {
+	position: absolute;
+	top: 320px;
+}
+.eigthCloudPosition {
+	position: absolute;
+	top: 370px;
+}
+.ninthCloudPosition {
+	position: absolute;
+	top: 420px;
+}
+.tenthCloudPosition {
+	position: absolute;
+	top: 470px;
+}
+
+@media (max-width: 499px) {
+    .firstCloudPosition {
+        position: absolute;
+        top: 20px;
+    }
+    .secondCloudPosition {
+        position: absolute;
+        top: 50px;
+    }
+    .thirdCloudPosition {
+        position: absolute;
+        top: 90px;
+    }
+    .fourthCloudPosition {
+        position: absolute;
+        top: 120;
+    }
+    .fifthCloudPosition {
+        position: absolute;
+        top: 150;
+    }
+    .sixthCloudPosition {
+        position: absolute;
+        top: 180;
+    }
+    .seventhCloudPosition {
+        position: absolute;
+        top: 210;
+    }
+    .eigthCloudPosition {
+        position: absolute;
+        top: 240;
+    }
+    .ninthCloudPosition {
+        position: absolute;
+        top: 220px;
+    }
+    .tenthCloudPosition {
+        position: absolute;
+        top: 110px;
+    }
+}
