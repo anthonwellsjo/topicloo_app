@@ -54,71 +54,68 @@ const AnswerTopic = (props) => {
             initialTime={timeout}
             startImmediately={true}
             direction="backward"
-            checkpoints={[{ time: 0, callback: props.onTimerFinished},]}
+            checkpoints={[{ time: 0, callback: props.onTimerFinished },]}
         >
             {({ getTime }) => (
                 <>
-                    <Zoom
-                        in={props.in}>
-                        <Paper className={classes.div}>
-                            <Container>
-                                <br />
-                                <Row>
-                                    <Col className="text-center">
-                                        <h3>{props.topic.topic}</h3>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col className="text-center">
-                                        <h4>{props.topic.comment}</h4>
-                                    </Col>
-                                </Row>
+                    <Paper className={classes.div}>
+                        <Container>
+                            <br />
+                            <Row>
+                                <Col className="text-center">
+                                    <h3>{props.topic.topic}</h3>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col className="text-center">
+                                    <h4>{props.topic.comment}</h4>
+                                </Col>
+                            </Row>
 
+                            <Row>
+                                <Col className="text-center">
+                                    <textarea className={classes.textarea} placeholder="..." ref={focusRef} value={textAnswer} onChange={(e) => onTextChangeEventHandler(e)} />
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col className="text-center">
+                                    <h4>This makes me</h4>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col className="text-center">
+                                    <EmojisInAnswerTopic
+                                        happy={props.topic.emojis.happy}
+                                        sad={props.topic.emojis.sad}
+                                        angry={props.topic.emojis.angry}
+                                        curious={props.topic.emojis.curious}
+                                        happyIsChecked={emojiAnswer.happy}
+                                        sadIsChecked={emojiAnswer.sad}
+                                        angryIsChecked={emojiAnswer.angry}
+                                        curiousIsChecked={emojiAnswer.curious}
+                                        happyToggleChecked={() => setEmojiAnswer({ ...emojiAnswer, happy: !emojiAnswer.happy })}
+                                        sadToggleChecked={() => setEmojiAnswer({ ...emojiAnswer, sad: !emojiAnswer.sad })}
+                                        angryToggleChecked={() => setEmojiAnswer({ ...emojiAnswer, angry: !emojiAnswer.angry })}
+                                        curiousToggleChecked={() => setEmojiAnswer({ ...emojiAnswer, curious: !emojiAnswer.curious })}
+                                    />
+                                </Col>
+                            </Row>
+                            <div className={classes.progressDiv}>
                                 <Row>
-                                    <Col className="text-center">
-                                        <textarea className={classes.textarea} placeholder="..." ref={focusRef} value={textAnswer} onChange={(e) => onTextChangeEventHandler(e)} />
+                                    <Col>
+                                        <ProgressBar>
+                                            <ProgressBar animated striped variant={calculateProgressBarVariant(getTime(), timeout)} now={Math.floor((getTime() / timeout * 100)) - 3} key={1} />
+                                        </ProgressBar>
                                     </Col>
                                 </Row>
-                                <Row>
-                                    <Col className="text-center">
-                                        <h4>This makes me</h4>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col className="text-center">
-                                        <EmojisInAnswerTopic
-                                            happy={props.topic.emojis.happy}
-                                            sad={props.topic.emojis.sad}
-                                            angry={props.topic.emojis.angry}
-                                            curious={props.topic.emojis.curious}
-                                            happyIsChecked={emojiAnswer.happy}
-                                            sadIsChecked={emojiAnswer.sad}
-                                            angryIsChecked={emojiAnswer.angry}
-                                            curiousIsChecked={emojiAnswer.curious}
-                                            happyToggleChecked={() => setEmojiAnswer({ ...emojiAnswer, happy: !emojiAnswer.happy })}
-                                            sadToggleChecked={() => setEmojiAnswer({ ...emojiAnswer, sad: !emojiAnswer.sad })}
-                                            angryToggleChecked={() => setEmojiAnswer({ ...emojiAnswer, angry: !emojiAnswer.angry })}
-                                            curiousToggleChecked={() => setEmojiAnswer({ ...emojiAnswer, curious: !emojiAnswer.curious })}
-                                        />
-                                    </Col>
-                                </Row>
-                                <div className={classes.progressDiv}>
-                                    <Row>
-                                        <Col>
-                                            <ProgressBar>
-                                                <ProgressBar animated striped variant={calculateProgressBarVariant(getTime(), timeout)} now={Math.floor((getTime() / timeout * 100)) - 3} key={1} />
-                                            </ProgressBar>
-                                        </Col>
-                                    </Row>
-                                </div>
-                                <Row>
-                                    <Col className="text-center">
-                                        <Timer.Seconds /> seconds
+                            </div>
+                            <Row>
+                                <Col className="text-center">
+                                    <Timer.Seconds /> seconds
                             </Col>
-                                </Row>
-                            </Container>
-                        </Paper>
-                    </Zoom>
+                            </Row>
+                        </Container>
+                    </Paper>
                 </>
             )}
         </Timer>

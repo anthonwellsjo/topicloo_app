@@ -19,14 +19,16 @@ class AnsweringPage extends Component {
         showLoadingAnimation: false,
         topicsHaveBeenFetched: false,
         readyToStart: false,
-        showAnswerPaper: true
+        showAnswerPaper: true,
+        onGoingTopicChange: false,
     }
     ANIMATION_WAS_CLICKED = false;
 
     TOPICLOO_NAMES = {};
     TOPICLOO_TOPICS = {};
     TOPICLOO_TOPIC_KEYS_TO_ANSWER = [];
-    CURRENT_TOPIC = "";
+    CURRENT_TOPIC = {};
+    HAS_A_RANDOM_TOPIC = false;
 
     //Life cycles
 
@@ -40,6 +42,13 @@ class AnsweringPage extends Component {
     componentDidUpdate(prevProps, prevState) {
         if ((this.state.topicsHaveBeenFetched !== prevState.topicsHaveBeenFetched) && this.state.topicsHaveBeenFetched === true) {
             this.setState(prevState => ({ ...prevState, showStartModal: true, showLoadingAnimation: false }));
+        }
+
+        if (this.state.ongoingTopicChange) {
+            setTimeout(() => {
+                this.setState(prevState => ({ ...prevState, showLoadingAnimation: false, showAnswerPaper: true, ongoingTopicChange: false }));
+            }, 300);
+
         }
     }
 
@@ -60,15 +69,16 @@ class AnsweringPage extends Component {
     }
     onTimerFinishedEventHandler = () => {
         console.log("timer finished!");
-        this.setState(prevState => ({ ...prevState, showAnswerPaper: false, showLoadingAnimation: true }));
+        this.setState(prevState => ({ ...prevState, showAnswerPaper: false, showLoadingAnimation: true, ongoingTopicChange: true }));
         this.removeCurrentTopicFromTopicsToDo();
     }
 
     //Functions
 
     removeCurrentTopicFromTopicsToDo = () => {
-        console.log("removeCurrentTopicFromTopicsToDo", this);
-        this.TOPICLOO_TOPIC_KEYS_TO_ANSWER.splice(this.TOPICLOO_TOPIC_KEYS_TO_ANSWER.indexOf(this.CURRENT_TOPIC, 1));
+        console.log("removeCurrentTopicFromTopicsToDo", `${this.CURRENT_TOPIC.topic}`);
+        // this.TOPICLOO_TOPIC_KEYS_TO_ANSWER.splice(this.TOPICLOO_TOPIC_KEYS_TO_ANSWER.indexOf(`${this.CURRENT_TOPIC.topic}`, 1));
+        this.HAS_A_RANDOM_TOPIC = false;
     }
 
     handleCounterAnimation = () => {
@@ -102,6 +112,7 @@ class AnsweringPage extends Component {
     }
 
     getRandomTopic = () => {
+        console.log("get random topic");
         const randomIndex = Math.floor(Math.random() * this.TOPICLOO_TOPIC_KEYS_TO_ANSWER.length);
         console.log("get topic", this.TOPICLOO_TOPICS[this.TOPICLOO_TOPIC_KEYS_TO_ANSWER[randomIndex]]);
         const randomTopic = this.TOPICLOO_TOPICS[this.TOPICLOO_TOPIC_KEYS_TO_ANSWER[randomIndex]];
@@ -110,18 +121,25 @@ class AnsweringPage extends Component {
     }
 
     renderAnswerPage = () => {
-        this.CURRENT_TOPIC = this.getRandomTopic();
+        if (this.state.readyToStart && this.state.topicsHaveBeenFetched && !this.HAS_A_RANDOM_TOPIC) {
+            this.CURRENT_TOPIC = this.getRandomTopic();
+            this.HAS_A_RANDOM_TOPIC = true;
+        }
+
         return (
-            this.state.readyToStart && this.state.topicsHaveBeenFetched ? <AnswerTopic
+            this.state.readyToStart && this.state.topicsHaveBeenFetched ? <Zoom
                 in={this.state.showAnswerPaper}
-                onTimerFinished={this.onTimerFinishedEventHandler}
-                topic={this.CURRENT_TOPIC} /> : null
+                unmountOnExit><AnswerTopic
+                    onTimerFinished={this.onTimerFinishedEventHandler}
+                    topic={this.CURRENT_TOPIC} />
+            </Zoom> : null
         )
     }
 
     render() {
-        const answerPaperRender = this.renderAnswerPage()
         console.log("rerender", this);
+        const answerPaperRender = this.renderAnswerPage()
+        console.log("rerender after new renderanswerpage", this);
         return (
             <Frame>
                 <Paper elevation={3} className={classes.paperdiv} >
