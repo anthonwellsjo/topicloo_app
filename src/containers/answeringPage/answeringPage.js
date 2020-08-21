@@ -77,7 +77,9 @@ class AnsweringPage extends Component {
 
     removeCurrentTopicFromTopicsToDo = () => {
         console.log("removeCurrentTopicFromTopicsToDo", `${this.CURRENT_TOPIC.topic}`);
-        // this.TOPICLOO_TOPIC_KEYS_TO_ANSWER.splice(this.TOPICLOO_TOPIC_KEYS_TO_ANSWER.indexOf(`${this.CURRENT_TOPIC.topic}`, 1));
+        if (this.TOPICLOO_TOPIC_KEYS_TO_ANSWER.length > 1) {
+            this.TOPICLOO_TOPIC_KEYS_TO_ANSWER.splice(this.TOPICLOO_TOPIC_KEYS_TO_ANSWER.indexOf(`${this.CURRENT_TOPIC.topic}`), 1);
+        }
         this.HAS_A_RANDOM_TOPIC = false;
     }
 
