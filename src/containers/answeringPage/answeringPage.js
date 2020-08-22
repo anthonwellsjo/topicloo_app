@@ -10,6 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import classes from './answeringPage.module.css';
 import AnswerTopic from '../../components/answerTopic/answerTopic';
 import StartTopiclooModal from '../../components/startTopiclooModal/startTopiclooModal';
+import UserFinishedPage from '../../components/userFinishedPage/userFinishedPage';
 
 
 class AnsweringPage extends Component {
@@ -21,6 +22,7 @@ class AnsweringPage extends Component {
         readyToStart: false,
         showAnswerPaper: true,
         onGoingTopicChange: false,
+        userHasFinishedSurvey: false
     }
     ANIMATION_WAS_CLICKED = false;
 
@@ -44,9 +46,9 @@ class AnsweringPage extends Component {
             this.setState(prevState => ({ ...prevState, showStartModal: true, showLoadingAnimation: false }));
         }
 
-        if (this.state.ongoingTopicChange) {
+        if (this.state.onGoingTopicChange && !this.state.userHasFinishedSurvey) {
             setTimeout(() => {
-                this.setState(prevState => ({ ...prevState, showLoadingAnimation: false, showAnswerPaper: true, ongoingTopicChange: false }));
+                this.setState(prevState => ({ ...prevState, showLoadingAnimation: false, showAnswerPaper: true, onGoingTopicChange: false }));
             }, 300);
 
         }
@@ -69,17 +71,25 @@ class AnsweringPage extends Component {
     }
     onTimerFinishedEventHandler = () => {
         console.log("timer finished!");
-        this.setState(prevState => ({ ...prevState, showAnswerPaper: false, showLoadingAnimation: true, ongoingTopicChange: true }));
+        this.setState(prevState => ({ ...prevState, showAnswerPaper: false, showLoadingAnimation: true, onGoingTopicChange: true }));
         this.removeCurrentTopicFromTopicsToDo();
+        this.checkIfUserHasFinishedSurvey();
+
     }
 
     //Functions
 
+    checkIfUserHasFinishedSurvey = () => {
+        if (this.TOPICLOO_TOPIC_KEYS_TO_ANSWER.length === 0) {
+            this.setState(prevState => ({...prevState, userHasFinishedSurvey: true}));
+        }
+    }
+
     removeCurrentTopicFromTopicsToDo = () => {
         console.log("removeCurrentTopicFromTopicsToDo", `${this.CURRENT_TOPIC.topic}`);
-        if (this.TOPICLOO_TOPIC_KEYS_TO_ANSWER.length > 1) {
+        if (this.TOPICLOO_TOPIC_KEYS_TO_ANSWER.length > 0) {
             this.TOPICLOO_TOPIC_KEYS_TO_ANSWER.splice(this.TOPICLOO_TOPIC_KEYS_TO_ANSWER.indexOf(`${this.CURRENT_TOPIC.topic}`), 1);
-        }
+        } 
         this.HAS_A_RANDOM_TOPIC = false;
     }
 
@@ -129,7 +139,7 @@ class AnsweringPage extends Component {
         }
 
         return (
-            this.state.readyToStart && this.state.topicsHaveBeenFetched ? <Zoom
+            this.state.readyToStart && this.state.topicsHaveBeenFetched && !this.state.userHasFinishedSurvey? <Zoom
                 in={this.state.showAnswerPaper}
                 unmountOnExit><AnswerTopic
                     onTimerFinished={this.onTimerFinishedEventHandler}
@@ -138,9 +148,16 @@ class AnsweringPage extends Component {
         )
     }
 
+    renderUsertFinishedPage = () => {
+        return (
+            this.state.userHasFinishedSurvey? <UserFinishedPage/> : null
+        )
+    }
+
     render() {
         console.log("rerender", this);
-        const answerPaperRender = this.renderAnswerPage()
+        const answerPaperRender = this.renderAnswerPage();
+        const userFinishedPage = this.renderUsertFinishedPage();
         console.log("rerender after new renderanswerpage", this);
         return (
             <Frame>
@@ -167,6 +184,7 @@ class AnsweringPage extends Component {
                 </Paper>
                 <Frame>
                     {answerPaperRender}
+                    {userFinishedPage}
                 </Frame>
             </Frame>
         )
